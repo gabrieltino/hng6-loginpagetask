@@ -76,7 +76,7 @@ body {
 
 .forgot-password {
     display: block;
-    margin: 2em 0 0 35%;
+    margin: 2em 0 0 20%;
     -webkit-transition: font-size 0.5s; /* For Safari 3.1 to 6.0 */
   transition: font-size 0.5s;
 }
