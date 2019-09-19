@@ -20,6 +20,14 @@ body {
     padding: 20px 15px;
 }
 
+.help-block {
+  position: relative;
+  left: 3%;
+  color: red;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
 .form-head {
     font-size: 2em;
     text-align: center;
@@ -37,7 +45,7 @@ body {
 
 .form-group .input-control {
   flex-grow: 1;
-  flex-shrink: 1;
+  flex-shrink: 0;
   flex-basis: auto;
   display: block;
   margin: 14px 12px 20px 12px;
