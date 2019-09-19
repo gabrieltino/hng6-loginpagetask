@@ -136,7 +136,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($stmt->execute()) {
 
         // Redirect to login page
-        header("location: login.php");
+        header("location: index.php");
       } else {
         echo "Something went wrong. Please try again later.";
       }
