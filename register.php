@@ -195,7 +195,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </form>
     <div class="have-acct">
       <span>Already have an account?</span>
-      <a href="login.php">Sign in</a>
+      <a href="index.php">Sign in</a>
     </div>
   </div>
 </body>
