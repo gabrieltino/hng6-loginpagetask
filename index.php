@@ -35,7 +35,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     // Validate credentials
     if(empty($email_err) && empty($password_err)){
         // Prepare a select statement
-        $sql = "SELECT id, email, password FROM users WHERE email = ?";
+        $sql = "SELECT id, firstname, email, password FROM users WHERE email = ?";
         
         if($stmt = $mysqli->prepare($sql)){
             // Bind variables to the prepared statement as parameters
@@ -52,7 +52,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 // Check if username exists, if yes then verify password
                 if($stmt->num_rows == 1){                    
                     // Bind result variables
-                    $stmt->bind_result($id, $email, $hashed_password);
+                    $stmt->bind_result($id, $firstname, $email, $hashed_password);
                     if($stmt->fetch()){
                         if(password_verify($password, $hashed_password)){
                             // Password is correct, so start a new session
@@ -61,11 +61,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
+                            $_SESSION["firstname"] = $firstname;
                             $_SESSION["email"] = $email;                            
                             
                             // Redirect user to welcome page
                             header("location: welcome.php");
-                        } else{
+                        } else {
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
                         }
@@ -107,13 +108,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="formbox">
             <h4 class="form-head"><i class="fas fa-sign-in-alt" style="margin-right: 1em;"></i>Login</h4>
             <form class="form-control" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-                    <input class="form-field" type="email" name="email" id="email" value="<?php echo $email; ?>" placeholder="Email Address" />
-                    <span class="help-block"><?php echo $email_err; ?></span>
+                    
+                <div class="form-group">
+                    <span class="help-block2"><?php echo $email_err; ?></span>
+                    <input class="form-field <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>" type="email" name="email" id="email" value="<?php echo $email; ?>" placeholder="Email Address" required/>
                 </div>
-                <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-                    <input class="form-field" type="password" name="password" id="password" placeholder="Password" />
-                    <span class="help-block"><?php echo $password_err; ?></span>
+                    
+                <div class="form-group">
+                    <span class="help-block2"><?php echo $password_err; ?></span>
+                    <input class="form-field <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>" type="password" name="password" id="password" placeholder="Password" />
                 </div>
 
                 <div>

@@ -152,21 +152,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <span class="help-block"><?php echo $firstname_err; ?></span>
       <span class="help-block" style="left: 60%;"><?php echo $lastname_err; ?></span>
       <div class="form-group">
-        <input class="input-control" type="text" name="firstname" placeholder="First name" value="<?php echo $firstname; ?>" required />
+        <input class="input-control <?php echo (!empty($firstname_err)) ? 'has-error' : ''; ?>" type="text" name="firstname" placeholder="First name" value="<?php echo $firstname; ?>" required />
 
 
-        <input class="input-control " type="text" name="lastname" placeholder="Last name" value="<?php echo $lastname; ?>" required/>
+        <input class="input-control <?php echo (!empty($lastname_err)) ? 'has-error' : ''; ?>" type="text" name="lastname" placeholder="Last name" value="<?php echo $lastname; ?>" required />
       </div>
       <span class="help-block"><?php echo $email_err; ?></span>
-      <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
-        <input class="input-control" type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required />
+      <div class="form-group">
+        <input class="input-control <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>" type="email" name="email" placeholder="Email" value="<?php echo $email; ?>" required />
       </div>
       <span class="help-block"><?php echo $password_err; ?></span>
-      <div class="form-group <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>">
-        <input class="input-control" type="password" name="password" placeholder="Password" value="<?php echo $password; ?>" required />
+      <div class="form-group">
+        <input class="input-control <?php echo (!empty($password_err)) ? 'has-error' : ''; ?>" type="password" name="password" placeholder="Password" value="<?php echo $password; ?>" required />
       </div>
-      <div class="form-group <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>">
-        <span class="help-block"><?php echo $phone_err; ?></span>
+      <div class="form-group">
+        <span class="help-block <?php echo (!empty($phone_err)) ? 'has-error' : ''; ?>"><?php echo $phone_err; ?></span>
         <input class="input-control" type="tel" name="phone" placeholder="Phone number" value="<?php echo $phone; ?>" required />
       </div>
       <div class="form-group">

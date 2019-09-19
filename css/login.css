@@ -10,6 +10,18 @@ body {
     overflow-x: hidden;
 }
 
+.help-block2 {
+  position: relative;
+  left: -10%;
+  color: red;
+  margin-bottom: 0;
+  font-size: 13px;
+}
+
+.has-error {
+  border: 1px solid red;
+}
+
 .flex-container {
     display: flex;
     flex-direction: column;
